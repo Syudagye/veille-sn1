@@ -6,11 +6,9 @@ import * as news from './routes/news';
 
 export class VeilleAPI {
     app: Express;
-    conn: PoolConnection;
 
-    constructor(conn: PoolConnection) {
+    constructor() {
         this.app = express();
-        this.conn = conn;
 
         // support pour le json
         this.app.use(BodyParser.json());
