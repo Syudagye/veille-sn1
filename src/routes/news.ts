@@ -46,3 +46,18 @@ export async function POST(req: Request, res: Response) {
 
     res.sendStatus(200)
 }
+
+export async function DELETE(req: Request, res: Response) {
+    console.log(`${req.ip} is deleting new`);
+
+    if (req.query.id == undefined) {
+        res.sendStatus(400);
+    }
+
+    const conn = await database.getPool().getConnection();
+    const result = await conn.query(`DELETE FROM Info WHERE id_info = ${req.query.id}`);
+
+    // TODO: Verifier le resultat de la requête
+
+    res.sendStatus(200)
+}

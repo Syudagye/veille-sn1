@@ -16,6 +16,7 @@ export class VeilleAPI {
         // les routes
         this.app.get('/news', news.GET);
         this.app.post('/news', news.POST);
+        this.app.delete('/news', news.DELETE);
     }
 
     start() {
