@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon dist/index.js",
-    "dev-build": "tsc -w"
+    "dev-build": "tsc -w",
+    "build": "tsc",
+    "clean": "rm -rfv node_modules/ dist/"
   },
   "author": "",
   "license": "ISC",
