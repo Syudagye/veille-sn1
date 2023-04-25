@@ -1,0 +1,28 @@
+import express, { Express } from 'express';
+import * as BodyParser from 'body-parser';
+import { PoolConnection } from 'mariadb';
+
+import * as news from './routes/news';
+
+export class VeilleAPI {
+    app: Express;
+    conn: PoolConnection;
+
+    constructor(conn: PoolConnection) {
+        this.app = express();
+        this.conn = conn;
+
+        // support pour le json
+        this.app.use(BodyParser.json());
+
+        // les routes
+        this.app.get('/news', news.GET);
+        this.app.post('/news', news.POST);
+    }
+
+    start() {
+        this.app.listen(process.env.API_PORT, () => {
+            console.log("Api Started");
+        })
+    }
+}
